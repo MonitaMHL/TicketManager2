@@ -21,12 +21,14 @@ public class CustomerTable extends GuiBase {
             static final int header = 30;
             static final int buttons = 32;
         }
+
         static class background {
             static final Color title = new Color(215,235,255);
             static final Color buttonsPanel = new Color(228,228,228);
             static final Color scrollPanel = Color.white;
         }
     }
+
     CustomerTable(Theatre theatre, int selectedRowNdx) {
         this.theatre = theatre;
         this.selectedRowNdx = selectedRowNdx;
@@ -65,8 +67,8 @@ public class CustomerTable extends GuiBase {
             @Override
             public void actionPerformed(ActionEvent e) {
                 final String cmd = e.getActionCommand();
-                Form.FORM_ACTION action = cmd.matches("Rediger") ? Form.FORM_ACTION.EDIT :
-                        cmd.matches("Ny") ? Form.FORM_ACTION.INSERT : Form.FORM_ACTION.DELETE;
+                Form.FORM_ACTION action = cmd.matches("Edit") ? Form.FORM_ACTION.EDIT :
+                        cmd.matches("New") ? Form.FORM_ACTION.INSERT : Form.FORM_ACTION.DELETE;
                 Debug.console("CustomerTable.actionPerformed." + action);
 
                 Debug.console("actionlistener: " + e);
@@ -89,10 +91,10 @@ public class CustomerTable extends GuiBase {
         showList(selectedRowNdx);
 
 
-
         container.add(jPanelButtons, makeConstraints(0, 1));
         GuiBase.getFrame().pack();
     }
+
     void showList(int selectedRowNdx) {
         JScrollPane jScrollPane = makeList(selectedRowNdx);
         container.add(jScrollPane, makeConstraints(0,2));
@@ -101,6 +103,7 @@ public class CustomerTable extends GuiBase {
     public List<Customer> getCustomers() {
         return customers;
     }
+
     private String getId(int rowNdx) {
         return String.valueOf(table.getModel().getValueAt(rowNdx,0));
     }

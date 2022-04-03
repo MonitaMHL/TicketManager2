@@ -1,11 +1,11 @@
 import java.util.Arrays;
 
 class Customer {
-
     enum EType {FREE, PRIVATE, RANDOM, COMPANY,}
 
+
+    static String[] ddChoices = new String[]{"Random", "Private", "Company"};
     static class Type {
-        static String[] ddChoices = new String[]{"Tilfeldig", "Privat", "Selskap"};
 
         static int getIndex(String ddType) {
             return Arrays.asList(ddChoices).indexOf(ddType);
@@ -25,11 +25,11 @@ class Customer {
         static String getDdText(EType eType) {
             switch (eType) {
                 case PRIVATE:
-                    return "Privat";
+                    return "Private";
                 case COMPANY:
-                    return "Selskap";
+                    return "Company";
                 default:
-                    return "Tilfeldig";    // Random:
+                    return "Random";    // Random:
             }
         }
 
@@ -40,7 +40,7 @@ class Customer {
                 case "Selskap":
                     return EType.COMPANY;
                 default:
-                    return EType.RANDOM; // "Tilfeldig"
+                    return EType.RANDOM; // "Random"
             }
         }
 
@@ -114,7 +114,10 @@ class Customer {
         return id;
     }
 
-    public String getContact() {return getContact(); }
+    public String getContact() {
+        return getContact();
+    }
+
     public String getName() {
         return name;
     }
